@@ -1,18 +1,15 @@
 {
-  "name": "MonsterSwap-Factory",
+  "name": "MonsterSwap-PoolFactory",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "migrate:development": "truffle migrate --network development --reset",
-    "migrate:testnet": "truffle migrate --network testnet --reset",
-    "migrate:bsc": "truffle migrate --network bsc",
-    "compile": "truffle compile --network bscTestnet",
-    "flatten": "truffle-flattener ./contracts/MasterApe.sol > ./contracts-flattened/MasterApe.sol && truffle-flattener ./contracts/SupportApe.sol > ./contracts-flattened/SupportApe.sol && truffle-flattener ./contracts/BananaToken.sol > ./contracts-flattened/BananaToken.sol && truffle-flattener ./contracts/BananaSplitBar.sol > ./contracts-flattened/BananaSplitBar.sol && truffle-flattener ./contracts/Timelock.sol > ./contracts-flattened/Timelock.sol && truffle-flattener ./contracts/BNBRewardApe.sol > ./contracts-flattened/BNBRewardApe.sol",
-    "flatten:pool": "truffle-flattener ./contracts/BEP20RewardApeV2.sol > ./BEP20RewardApeV2_flat.sol",
-    "verify:bsc:bep20rewardape": "truffle run verify BEP20RewardApeV2 --network bsc",
-    "verify:testnet:bep20rewardape": "truffle run verify BEP20RewardApeV2 --network testnet",
+    "migrate:development": "truffle migrate MonsterPoolFactory --network development --reset",
+    "migrate:testnet": "truffle migrate MonsterPoolFactory --network testnet --reset",
+    "migrate:bsc": "truffle migrate MonsterPoolFactory --network bsc",
+    "compile": "truffle compile",
+    "verify:testnet": "truffle run verify MonsterPoolFactory --network testnet",
     "verify:migrations": "truffle run verify Migrations --network bsc",
-    "verify:bsc": "truffle run verify MonsterChef --network bsc && truffle run verify KaijuToken --network bsc && truffle run verify Timelock --network bsc && truffle run verify Daikaiju --network bsc && truffle run verify MultiCall --network testnet"
+    "verify:bsc": "truffle run verify MonsterPoolFactory --network bsc "
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.4.1",

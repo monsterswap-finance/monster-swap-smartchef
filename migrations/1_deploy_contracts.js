@@ -1,6 +1,6 @@
-const MonsterFactory = artifacts.require("MonsterFactory");
+const MonsterPoolFactory = artifacts.require('MonsterPoolFactory')
 
 module.exports = function (deployer, network, accounts) {
   //constructor(address _factory, address _WETH) public {
-  deployer.deploy(MonsterFactory, "0xa6a4b15419F911B2C24d39329AbEa5532153dd65");
-};
+  deployer.deploy(MonsterPoolFactory)
+}
