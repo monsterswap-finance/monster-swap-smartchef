@@ -1,9 +1,13 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider')
 require('dotenv').config()
 
-const BSC_SCANAPI_KEY = process.env.BSCSCAN_API_KEY
-const BSC_DEPLOYER_KEY = process.env.BSC_DEPLOYER_KEY
-const BSC_TESTNET_DEPLOYER_KEY = process.env.BSC_TESTNET_DEPLOYER_KEY
+const BSC_SCANAPI_KEY = process.env.BSCSCAN_API_KEY;
+const BSC_DEPLOYER_KEY = process.env.BSC_DEPLOYER_KEY;
+const BSC_TESTNET_DEPLOYER_KEY = process.env.BSC_TESTNET_DEPLOYER_KEY;
+const BSC_TESTNET_DEPLOYER_ACC = process.env.BSC_TESTNET_DEPLOYER_ACCOUNT;
+const FTM_SCANAPI_KEY = process.env.FANTOM_API_KEY
+const FTM_DEPLOYER_KEY = process.env.FANTOM_DEPLOYER_KEY;
+const FTM_DEPLOYER_ACC = process.env.FANTOM_ACCOUNT;
 
 module.exports = {
   networks: {
@@ -13,12 +17,36 @@ module.exports = {
       network_id: '*', // Any network (default: none)
     },
     testnet: {
-      provider: () => new HDWalletProvider(BSC_TESTNET_DEPLOYER_KEY, `https://data-seed-prebsc-2-s1.binance.org:8545`),
+      provider: () => new HDWalletProvider(BSC_TESTNET_DEPLOYER_KEY, `https://data-seed-prebsc-2-s2.binance.org:8545`),
       network_id: 97,
       confirmations: 2,
       timeoutBlocks: 200,
       skipDryRun: true,
-      from: '0xa6a4b15419F911B2C24d39329AbEa5532153dd65',
+      from: BSC_TESTNET_DEPLOYER_ACC,
+    },
+     ftmtest: {
+      provider: () =>
+        new HDWalletProvider(
+          FTM_DEPLOYER_KEY,
+          `https://explorer.testnet.fantom.network`
+        ),
+      network_id: 4002,
+      confirmations: 1,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      from: FTM_DEPLOYER_ACC,
+    },
+     ftmmain: {
+      provider: () =>
+        new HDWalletProvider(
+          FTM_DEPLOYER_KEY,
+          `https://rpc.ftm.tools/`
+        ),
+      network_id: 250,
+      confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      from: FTM_DEPLOYER_ACC,
     },
     bsc: {
       provider: () => new HDWalletProvider(BSC_DEPLOYER_KEY, `https://bsc-dataseed1.binance.org`),
@@ -32,6 +60,7 @@ module.exports = {
   api_keys: {
     // Add BSCSCAN_API_KEY in .env file to verify contracts deployed through truffle
     bscscan: BSC_SCANAPI_KEY,
+    ftmscan: FTM_SCANAPI_KEY
   },
   // Set default mocha options here, use special reporters etc.
   mocha: {

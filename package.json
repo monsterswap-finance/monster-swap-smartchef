@@ -6,10 +6,15 @@
     "migrate:development": "truffle migrate MonsterPoolFactory --network development --reset",
     "migrate:testnet": "truffle migrate MonsterPoolFactory --network testnet --reset",
     "migrate:bsc": "truffle migrate MonsterPoolFactory --network bsc",
+    "migrate:ftmtest": "truffle migrate --network ftmtest --reset",
+    "migrate:ftmmain": "truffle migrate --network ftmmain --reset",
     "compile": "truffle compile",
     "verify:testnet": "truffle run verify MonsterPoolFactory --network testnet",
     "verify:migrations": "truffle run verify Migrations --network bsc",
-    "verify:bsc": "truffle run verify MonsterPoolFactory --network bsc "
+    "verify:bsc": "truffle run verify MonsterPoolFactory --network bsc ",
+    "verify:ftmtest": "truffle run verify MonsterPoolFactory --network ftmtest --reset ",
+    "verify:ftmmain": "truffle run verify MonsterPoolFactory --network ftmmain --reset "
+    
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.4.1",
